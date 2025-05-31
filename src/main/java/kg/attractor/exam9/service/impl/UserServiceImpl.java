@@ -84,8 +84,8 @@ public class UserServiceImpl implements UserService {
 
         User user = new User();
         user.setId(userDto.getId());
-        user.setName(userDto.getName());
-        user.setSurname(userDto.getSurname());
+        user.setFirstName(userDto.getFirstName());
+        user.setLastName(userDto.getLastName());
         user.setEmail(userDto.getEmail());
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
         user.setEnabled(true);
@@ -102,8 +102,8 @@ public class UserServiceImpl implements UserService {
     private UserDto builder(User user) {
         return UserDto.builder()
                 .id(user.getId())
-                .name(user.getName())
-                .surname(user.getSurname())
+                .firstName(user.getFirstName())
+                .lastName(user.getLastName())
                 .email(user.getEmail())
                 .password(user.getPassword())
                 .enabled(user.getEnabled())

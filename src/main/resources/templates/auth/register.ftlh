@@ -32,7 +32,6 @@
                     <div class="col-12 col-md-9 col-lg-7 col-xl-6">
                         <div class="card" style="border-radius: 15px;">
                             <div class="card-body p-5">
-                                <h2 class="text-uppercase text-center mb-5"><@spring.message "auth.register.createAcc" /></h2>
 
                                 <form action="/auth/register" method="post">
                                     <#if _csrf??>
@@ -41,49 +40,34 @@
                                     </#if>
 
                                     <div data-mdb-input-init class="form-outline mb-4">
-                                        <label class="form-label" for="form3Example1cg"><@spring.message "auth.register.name" /></label>
-                                        <@spring.formInput "userDto.name" 'id="form3Example1cg" class="form-control form-control-lg"' />
+                                        <label class="form-label" for="form3Example1cg">First name</label>
+                                        <@spring.formInput "userDto.firstName" 'id="form3Example1cg" class="form-control form-control-lg"' />
                                         <@spring.showErrors "<br>" "error text-danger" />
                                     </div>
 
                                     <div data-mdb-input-init class="form-outline mb-4">
-                                        <label class="form-label" for="form3Example2cg"><@spring.message "auth.register.lastName" /></label>
-                                        <@spring.formInput "userDto.surname" 'id="form3Example2cg" class="form-control form-control-lg"' />
+                                        <label class="form-label" for="form3Example2cg">Last name</label>
+                                        <@spring.formInput "userDto.lastName" 'id="form3Example2cg" class="form-control form-control-lg"' />
                                         <@spring.showErrors "<br>" "error text-danger" />
                                     </div>
 
                                     <div data-mdb-input-init class="form-outline mb-4">
-                                        <label class="form-label" for="form3Example0cg"><@spring.message "auth.register.phoneNumber" /></label>
-                                        <@spring.formInput "userDto.phoneNumber" 'id="form3Example0cg" class="form-control form-control-lg"' />
-                                        <@spring.showErrors "<br>" "error text-danger" />
-                                    </div>
-
-                                    <div data-mdb-input-init class="form-outline mb-4">
-                                        <label class="form-label" for="form3Example3cg"><@spring.message "auth.register.email" /></label>
+                                        <label class="form-label" for="form3Example3cg">Email</label>
                                         <@spring.formInput "userDto.email" 'id="form3Example3cg" class="form-control form-control-lg"' />
                                         <@spring.showErrors "<br>" "error text-danger" />
                                     </div>
 
                                     <div data-mdb-input-init class="form-outline mb-4">
-                                        <label class="form-label" for="form3Example4cg"><@spring.message "auth.register.password" /></label>
+                                        <label class="form-label" for="form3Example4cg">Password</label>
                                         <@spring.formInput "userDto.password" 'id="form3Example4cg" class="form-control form-control-lg"' />
                                         <@spring.showErrors "<br>" "error text-danger" />
                                     </div>
 
-                                    <div>
-                                        <@spring.formRadioButtons "userDto.accountType",
-                                        {"applicant":"Applicant", "employer":"Employer"},
-                                        "",
-                                        'class="form-check-input" inline="true"' />
-                                        <@spring.showErrors "<br>" "error text-danger" />
-                                    </div>
 
                                     <div class="d-flex justify-content-center">
                                         <button type="submit"
-<#--                                                data-mdb-button-init-->
-<#--                                                data-mdb-ripple-init-->
                                                 class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">
-                                            <@spring.message "auth.register.register" />
+                                            Register
                                         </button>
                                     </div>
                                 </form>

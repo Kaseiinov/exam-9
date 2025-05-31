@@ -7,9 +7,9 @@ spring:
     expose-session-attributes: true
 
   datasource:
-    url: jdbc:h2:./db/JobSearchDB;AUTO_SERVER=TRUE
+    url: jdbc:h2:./db/examDB;AUTO_SERVER=TRUE
     username: root
-    password: qwerty
+    password: qwer
     driver-class-name: org.h2.Driver
 
 

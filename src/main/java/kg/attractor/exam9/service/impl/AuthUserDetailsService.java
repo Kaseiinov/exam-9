@@ -79,8 +79,8 @@ public class AuthUserDetailsService implements UserDetailsService {
 
         if(existingUser.isEmpty()){
             User user = new User();
-            user.setName(firstName);
-            user.setSurname(lastName);
+            user.setFirstName(firstName);
+            user.setLastName(lastName);
             user.setEmail(email);
             user.setPassword(encoder.encode("qwe"));
             user.setEnabled(true);

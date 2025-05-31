@@ -1,0 +1,108 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001-create-tables_for_user
+      author: Kaseiinov
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: first_name
+                  type: VARCHAR(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_name
+                  type: VARCHAR(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: VARCHAR(255)
+                  constraints:
+                    unique: true
+                    nullable: false
+              - column:
+                  name: password
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: enabled
+                  type: boolean
+
+        - createTable:
+            tableName: AUTHORITIES
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: authority
+                  type: varchar(50)
+
+        - createTable:
+            tableName: roles
+            columns:
+              - column:
+                  name: id
+                  type: long
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+              - column:
+                  name: role
+                  type: varchar(50)
+
+        - createTable:
+            tableName: roles_authorities
+            columns:
+              - column:
+                  name: role_id
+                  type: long
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    foreignKeyName: fk_role_id_to_auth
+                    references: roles(id)
+              - column:
+                  name: authority_id
+                  type: long
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    foreignKeyName: fk_authority_id_to_roles
+                    references: authorities(id)
+
+        - createTable:
+            tableName: usr_roles
+            columns:
+              - column:
+                  name: usr_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    foreignKeyName: fk_usr_id_to_roles
+                    references: users(id)
+              - column:
+                  name: role_id
+                  type: long
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    foreignKeyName: fk_role_id_to_usr
+                    references: roles(id)
+

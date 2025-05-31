@@ -1,0 +1,107 @@
+databaseChangeLog:
+  - changeSet:
+      id: 002_create_tables
+      author: Kaseiinov_I
+      changes:
+        - createTable:
+            tableName: companies
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: email
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: password
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: avatar
+                  type: varchar
+              - column:
+                  name: name
+                  type: varchar(55)
+              - column:
+                  name: enable
+                  type: boolean
+
+        - createTable:
+            tableName: flights
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: city_dep
+                  type: varchar(55)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: city_arrive
+                  type: varchar(55)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: uniq_number
+                  type: varchar
+                  constraints:
+                    nullable: false
+              - column:
+                  name: company_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_company_id_flight
+                    references: companies(id)
+
+        - createTable:
+            tableName: tickets
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+
+              - column:
+                  name: price
+                  type: double
+
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_user_id_tickets
+                    references: users(id)
+              - column:
+                  name: flight_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_flight_id_tickets
+                    references: flights(id)
+              - column:
+                  name: status
+                  type: boolean
+              - column:
+                  name: type
+                  type: varchar(55)
+              - column:
+                  name: place
+                  type: int
+                  constraints:
+                    nullable: false
