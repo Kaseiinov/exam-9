@@ -40,10 +40,12 @@ public class SecurityConfig {
 
                                 .requestMatchers("user/profile").fullyAuthenticated()
                                 .requestMatchers("user/**").permitAll()
+                                .requestMatchers("/flights/**").fullyAuthenticated()
+
 
                                 .requestMatchers("/").permitAll()
 
-                                .anyRequest().permitAll()
+                                .anyRequest().fullyAuthenticated()
                 );
 
         return http.build();

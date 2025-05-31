@@ -2,10 +2,15 @@ package kg.attractor.exam9.service.impl;
 
 import kg.attractor.exam9.dto.FlightDto;
 import kg.attractor.exam9.dto.TicketDto;
+import kg.attractor.exam9.exceptions.InvalidUserException;
+import kg.attractor.exam9.exceptions.UserNotFoundException;
 import kg.attractor.exam9.models.Flight;
 import kg.attractor.exam9.models.Ticket;
+import kg.attractor.exam9.models.User;
 import kg.attractor.exam9.repository.FlightRepository;
 import kg.attractor.exam9.service.FlightService;
+import kg.attractor.exam9.service.TicketService;
+import kg.attractor.exam9.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -22,6 +27,20 @@ import java.util.List;
 @RequiredArgsConstructor
 public class FlightServiceImpl implements FlightService {
     private final FlightRepository flightRepository;
+    private final TicketService ticketService;
+    private final UserService userService;
+
+    @Override
+    public void buyTicket(String email, Long flightId, Long ticketId) throws InvalidUserException {
+        User user = userService.getUserByEmailModel(email).orElseThrow(UserNotFoundException::new);
+        if(user.getRoles().stream().anyMatch(r -> r.getRole().equals("ADMIN") || r.getRole().equals("COMPANY"))){
+            throw new InvalidUserException();
+        }
+        Ticket ticket = ticketService.findTicketById(ticketId);
+        ticket.setStatus(false);
+        ticket.setUser(user);
+        ticketService.save(ticket);
+    }
 
     @Override
     public Page<FlightDto> findAll(int page, int pagSize){

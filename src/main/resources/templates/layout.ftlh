@@ -47,20 +47,20 @@
 <#--                <li class="nav-item">-->
 <#--                    <a class="nav-link" href="/users/profile">Profile</a>-->
 <#--                </li>-->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">sdf</a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="/vacancies">sf</a></li>
-                    </ul>
-                </li>
+<#--                <li class="nav-item dropdown">-->
+<#--                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">sdf</a>-->
+<#--                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<#--                        <li><a class="dropdown-item" href="/vacancies">sf</a></li>-->
+<#--                    </ul>-->
+<#--                </li>-->
 
 <#--                <#if user?? && user.accountType?? && user.accountType?lower_case != "applicant">-->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">sd</a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/resumes">sdf</a></li>
-                        </ul>
-                    </li>
+<#--                    <li class="nav-item dropdown">-->
+<#--                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">sd</a>-->
+<#--                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<#--                            <li><a class="dropdown-item" href="/resumes">sdf</a></li>-->
+<#--                        </ul>-->
+<#--                    </li>-->
 <#--                </#if>-->
 
 <#--                <li class="nav-item dropdown">-->
