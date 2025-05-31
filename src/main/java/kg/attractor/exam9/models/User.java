@@ -36,4 +36,7 @@ public class User {
         role.getUsers().add(this);
     }
 
+    @OneToOne(mappedBy = "user")
+    private Ticket ticket;
+
 }
