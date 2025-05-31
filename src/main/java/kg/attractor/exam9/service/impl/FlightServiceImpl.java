@@ -74,6 +74,7 @@ public class FlightServiceImpl implements FlightService {
                         .cityArrival(e.getCityArrival())
                         .uniqNumber(e.getUniqNumber())
                         .companyId(e.getCompany().getId())
+                        .company(e.getCompany())
                         .economTickets(e.getTickets()
                                 .stream()
                                 .filter(t -> "ECONOMY".equals(t.getType()) && Boolean.TRUE.equals(t.getStatus()))

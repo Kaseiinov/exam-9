@@ -1,38 +1,30 @@
 <#import "layout.ftlh" as main>
 <@main.layout ; spring>
 
-<#--    <div class="row card justify-content-center" >-->
-<#--        <form action="/flights/" method="get">-->
-<#--            <div class="col-3">-->
-<#--                <div class="input-group mb-3">-->
-<#--                    <span class="input-group-text" id="inputGroup-sizing-default">Departure</span>-->
-<#--                    <input name="departure" type="text" class="form-control">-->
-<#--                </div>-->
-<#--            </div>-->
-<#--            <div class="col-3">-->
-<#--                <div class="input-group mb-3">-->
-<#--                    <span class="input-group-text" id="inputGroup-sizing-default">Destination</span>-->
-<#--                    <input name="destination"  type="text" class="form-control">-->
-<#--                </div>-->
-<#--            </div>-->
-<#--            <div class="col-3">-->
-<#--                <div class="input-group mb-3">-->
-<#--                    <span class="input-group-text" id="inputGroup-sizing-default">When?</span>-->
-<#--                    <input name="date"  type="date" class="form-control">-->
-<#--                </div>-->
-<#--            </div>-->
-<#--            <div class="col-3">-->
-<#--                <button type="submit" class="btn btn-primary">Search</button>-->
-<#--            </div>-->
-<#--        </form>-->
-<#--    </div>-->
+    <input type="text" class="form-control p-2 mb-2" placeholder="From" id="departure-input">
+    <input type="text" class="form-control p-2 mb-2" placeholder="To" id="destination-input">
+    <input type="date" class="form-control p-2 mb-4" placeholder="Date" id="date-input">
 
     <#if flights??>
+        <div id="flightsList">
             <#list flights as flight>
                 <div class="card w-100 mb-3 overflow-hidden list-group-item mb-3" >
                     <div class="card-body">
-                        <p class="card-text fs-3">from ${flight.cityDeparture} to ${flight.cityArrival}</p>
-                        <div class="card-text">deporture on ${flight.dateTimeDeparture} arrives on ${flight.dateTimeArrival}</div>
+                        <#if flight.company.name??>
+                            <p class="card-text fs-2">Company ${flight.company.name!'undefined'}</p>
+                        </#if>
+
+                        <p class="card-text fs-3">
+                            from <span class="departure-city">${flight.cityDeparture}</span>
+                            to <span class="destination-city">${flight.cityArrival}</span>
+                        </p>
+
+                        <!-- Добавьте класс к дате -->
+                        <div class="card-text">
+                            deporture on <span class="departure-date">${flight.dateTimeDeparture}</span>
+                            arrives on ${flight.dateTimeArrival}
+                        </div>
+
                         <p class="card-text">Bisnes price - ${flight.bissnessPrice!"undefined"}</p>
                         <p class="card-text">Econom price - ${flight.economyPrice!"undefined"}</p>
                         <button data-id="${flight.id}" type="button" class="buy-btn btn btn-outline-info" >But ticket</button>
@@ -81,6 +73,8 @@
                     </div>
                 </div>
             </#list>
+        </div>
+
     </#if>
 
     <nav >
