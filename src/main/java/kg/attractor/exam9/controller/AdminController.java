@@ -20,11 +20,11 @@ public class AdminController {
 
     private final UserService userService;
 
-    @GetMapping("admin")
-    public String register(Model model){
-        model.addAttribute("adminDto", new AdminDto());
-        return "auth/register";
-    }
+//    @GetMapping("admin")
+//    public String register(Model model){
+//        model.addAttribute("adminDto", new AdminDto());
+//        return "auth/register";
+//    }
 
 //    @PostMapping("admin")
 //    public String register(@Valid AdminDto adminDto, BindingResult bindingResult, Model model) throws SuchEmailAlreadyExistsException, RoleNotFoundException {
