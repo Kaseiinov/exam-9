@@ -40,9 +40,12 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/">Home</a>
                 </li>
-<#--                <li class="nav-item">-->
-<#--                    <a class="nav-link active" aria-current="page" href="/">${user}</a>-->
-<#--                </li>-->
+
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/admin/createCompany">Create company</a>
+                </li>
+
+
 
 <#--                <li class="nav-item">-->
 <#--                    <a class="nav-link" href="/users/profile">Profile</a>-->

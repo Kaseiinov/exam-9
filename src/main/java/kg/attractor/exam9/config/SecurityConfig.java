@@ -44,6 +44,7 @@ public class SecurityConfig {
 
 //                        User
 
+                                .requestMatchers("/admin/createCompany").hasAnyAuthority("ADMIN")
                                 .requestMatchers("user/profile").fullyAuthenticated()
                                 .requestMatchers("user/**").permitAll()
                                 .requestMatchers("/flights/**").fullyAuthenticated()
