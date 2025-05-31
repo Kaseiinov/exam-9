@@ -76,7 +76,7 @@
 <#--            <a href="/auth/register" class="btn btn-outline-success ms-4">Register</a>-->
             <#if user??>
                 <a href="/users/profile" class="nav-link mr4-l">
-                    <@spring.message "layout.nave.profile" />
+                    Profile
                     <#--                <#list user.authorities as auth>-->
                     <#--                    <span class="text-danger">${auth}</span>-->
                     <#--                    <#if auth?has_next>-->
@@ -89,12 +89,12 @@
                         <input type="hidden" name="${(_csrf.parameterName)!'csrf'}"
                                value="${(_csrf.token)!'--no-token--'}"/>
                         <button type="submit" class="btn btn-outline-info m-2"
-                                id="logout"><@spring.message "layout.nave.logout" />
+                                id="logout">logout
                         </button>
                     </form>
                 <#else>
                     <a href="/logout" class="btn btn-outline-info m-2"
-                       id="logout"><@spring.message "layout.nave.logout" /></a>
+                       id="logout">logout</a>
                 </#if>
             <#else>
                 <a href="/auth/login"

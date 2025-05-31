@@ -107,6 +107,7 @@ public class UserServiceImpl implements UserService {
                 .email(user.getEmail())
                 .password(user.getPassword())
                 .enabled(user.getEnabled())
+                .roleName(user.getRoles().iterator().next().getRole())
                 .build();
     }
 
