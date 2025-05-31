@@ -21,7 +21,9 @@ public class FlightDto {
     private String cityArrival;
     private String uniqNumber;
     private Long companyId;
-    private List<TicketDto> tickets;
+    private Company company;
+    private List<TicketDto> bissnessTickets;
+    private List<TicketDto> economTickets;
     private Double bissnessPrice;
     private Double economyPrice;
 

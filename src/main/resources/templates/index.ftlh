@@ -29,19 +29,35 @@
 
     <#if flights??>
             <#list flights as flight>
-                <div class="card w-100 mb-3 overflow-hidden list-group-item" >
+                <div class="card w-100 mb-3 overflow-hidden list-group-item mb-3" >
                     <div class="card-body">
                         <p class="card-text fs-3">from ${flight.cityDeparture} to ${flight.cityArrival}</p>
                         <div class="card-text">deporture on ${flight.dateTimeDeparture} arrives on ${flight.dateTimeArrival}</div>
                         <p class="card-text">Bisnes price - ${flight.bissnessPrice!"undefined"}</p>
                         <p class="card-text">Econom price - ${flight.economyPrice!"undefined"}</p>
-                        <form class="confirm-form" data-id="${flight.id}" action="/flights/buy" method="post">
+                        <button data-id="${flight.id}" type="button" class="buy-btn btn btn-outline-info" >But ticket</button>
+
+                        <form class="confirm-form d-none" data-id="${flight.id}" action="/flights/buy" method="post">
                             <div class="card">
                                 <div class="card-body">
+                                    <p class="card-text">Bisnes price - ${flight.bissnessPrice!"undefined"}</p>
+                                    <p class="card-text">Econom price - ${flight.economyPrice!"undefined"}</p>
+                                    <#if flight.bissnessTickets??>
+                                        <p class="card-text">Places for bissness <#list flight.bissnessTickets as ticket>
+                                                 ${ticket.place}
+                                            </#list></p>
+                                        <button type="submit" class="btn btn-outline-info">Buy bissness</button>
+                                    </#if>
+                                    <#if flight.economTickets??>
+                                        <p class="card-text">Places for economy <#list flight.economTickets as ticket>
+                                                ${ticket.place}
+                                            </#list></p>
+                                        <button type="submit" class="btn btn-outline-info">Buy econom</button>
+                                    </#if>
 
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-outline-info">Confirm</button>
+
                         </form>
                     </div>
                 </div>
@@ -78,5 +94,7 @@
             </ul>
         </div>
     </nav>
+
+    <script src="../static/main.js"></script>
 
 </@main.layout>

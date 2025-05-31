@@ -1,6 +1,7 @@
 package kg.attractor.exam9.service.impl;
 
 import kg.attractor.exam9.dto.FlightDto;
+import kg.attractor.exam9.dto.TicketDto;
 import kg.attractor.exam9.models.Flight;
 import kg.attractor.exam9.models.Ticket;
 import kg.attractor.exam9.repository.FlightRepository;
@@ -54,6 +55,40 @@ public class FlightServiceImpl implements FlightService {
                         .cityArrival(e.getCityArrival())
                         .uniqNumber(e.getUniqNumber())
                         .companyId(e.getCompany().getId())
+                        .economTickets(e.getTickets()
+                                .stream()
+                                .filter(t -> "ECONOMY".equals(t.getType()) && Boolean.TRUE.equals(t.getStatus()))
+                                .map(t -> TicketDto.builder()
+                                        .id(t.getId())
+                                        .price(t.getPrice())
+                                        .status(t.getStatus() != null ? t.getStatus().toString() : "false")
+                                        .type(t.getType())
+                                        .place(t.getPlace() != null ? t.getPlace().toString() : null)
+                                        .userId(t.getUser() != null ? t.getUser().getId() : null)
+                                        .flightId(t.getFlight() != null ? t.getFlight().getId() : null)
+                                        .build()
+                                )
+                                .toList()
+                        )
+
+                        .bissnessTickets(
+                                e.getTickets()
+                                        .stream()
+                                        .filter(t -> "BUSINESS".equals(t.getType()) && Boolean.TRUE.equals(t.getStatus()))
+                                        .map(t -> TicketDto.builder()
+                                                .id(t.getId())
+                                                .price(t.getPrice())
+                                                .status(t.getStatus() != null ? t.getStatus().toString() : "false")
+                                                .type(t.getType())
+                                                .place(t.getPlace() != null ? t.getPlace().toString() : null)
+                                                .userId(t.getUser() != null ? t.getUser().getId() : null)
+                                                .flightId(t.getFlight() != null ? t.getFlight().getId() : null)
+                                                .build()
+                                        )
+                                        .toList()
+                        )
+
+
                         .bissnessPrice(
                                 e.getTickets().stream()
                                         .filter(t -> "BUSINESS".equals(t.getType()))
