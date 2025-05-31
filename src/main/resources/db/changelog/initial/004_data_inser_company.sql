@@ -1,8 +1,8 @@
 -- Вставляем 3 компании
-INSERT INTO companies (email, password, name, enable) VALUES
-  ('sky_airlines@example.com', 'qwe', 'Sky Airlines', true),
-  ('star_flights@example.com', 'qwe', 'Star Flights', true),
-  ('global_travel@example.com', 'qwe', 'Global Travel', true);
+INSERT INTO companies (email, password, name, enable, avatar) VALUES
+  ('sky_airlines@example.com', 'qwe', 'Sky Airlines', true, '2fc5774d-4ae8-4583-8cb2-3714856c3784_Снимок экрана 2025-05-30 122704.png'),
+  ('star_flights@example.com', 'qwe', 'Star Flights', true, '217613b4-3044-44f0-aead-8205f65a465b_Снимок экрана 2025-05-30 122704.png'),
+  ('global_travel@example.com', 'qwe', 'Global Travel', true, 'not');
 
 -- Вставляем рейсы с датами и временем
 INSERT INTO flights (

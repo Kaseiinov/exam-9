@@ -51,6 +51,7 @@ public class SecurityConfig {
 
 
                                 .requestMatchers("/").permitAll()
+                                .requestMatchers("/images/byName/").permitAll()
 
                                 .anyRequest().fullyAuthenticated()
                 );
