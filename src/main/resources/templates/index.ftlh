@@ -10,6 +10,12 @@
             <#list flights as flight>
                 <div class="card w-100 mb-3 overflow-hidden list-group-item mb-3" >
                     <div class="card-body">
+
+                        <#if flight.company.avatar??>
+                            <img src="/images/byName/${flight.company.avatar}" width="80" height="80" alt="avatar" class="me-3">
+                        <#else>
+                            <i class="fas fa-user-circle me-3 rounded" style="font-size: 80px; color: #6c757d;"></i>
+                        </#if>
                         <#if flight.company.name??>
                             <p class="card-text fs-2">Company ${flight.company.name!'undefined'}</p>
                         </#if>
