@@ -1,8 +1,7 @@
 package kg.attractor.exam9.models;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Collection;
 import java.util.List;

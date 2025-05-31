@@ -3,6 +3,7 @@ package kg.attractor.exam9.exceptions.advice;
 
 import jakarta.servlet.http.HttpServletRequest;
 import kg.attractor.exam9.exceptions.ErrorResponseBody;
+import kg.attractor.exam9.exceptions.InvalidUserException;
 import kg.attractor.exam9.exceptions.SuchEmailAlreadyExistsException;
 import kg.attractor.exam9.service.ErrorService;
 import lombok.RequiredArgsConstructor;
@@ -30,6 +31,14 @@ public class GlobalControllerAdvice {
 
     @ExceptionHandler(SuchEmailAlreadyExistsException.class)
     public String handleSuchEmailAlreadyExists(Model model, HttpServletRequest request) {
+        model.addAttribute("status", HttpStatus.CONFLICT.value());
+        model.addAttribute("reason", HttpStatus.CONFLICT.getReasonPhrase());
+        model.addAttribute("details", request);
+        return "errors/error";
+    }
+
+    @ExceptionHandler(InvalidUserException.class)
+    public String handleInvalidUserException(Model model, HttpServletRequest request) {
         model.addAttribute("status", HttpStatus.CONFLICT.value());
         model.addAttribute("reason", HttpStatus.CONFLICT.getReasonPhrase());
         model.addAttribute("details", request);

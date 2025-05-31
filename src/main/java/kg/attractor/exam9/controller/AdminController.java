@@ -18,22 +18,11 @@ import javax.management.relation.RoleNotFoundException;
 @RequiredArgsConstructor
 public class AdminController {
 
-    private final UserService userService;
-
-//    @GetMapping("admin")
-//    public String register(Model model){
-//        model.addAttribute("adminDto", new AdminDto());
-//        return "auth/register";
-//    }
-
-//    @PostMapping("admin")
-//    public String register(@Valid AdminDto adminDto, BindingResult bindingResult, Model model) throws SuchEmailAlreadyExistsException, RoleNotFoundException {
-//        if(!bindingResult.hasErrors()){
-//            userService.register(adminDto);
-//            return "redirect:/auth/login";
-//        }
-//        model.addAttribute("adminDto", adminDto);
-//        return "auth/register";
+//    private final UserService userService;
+//
+//    @GetMapping("/admin/createCompany")
+//    public String createCompany(Model model){
+//
 //    }
 
 }

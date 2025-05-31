@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import java.time.LocalDate;
 
 public interface FlightService {
+    Page<FlightDto> findByUserRegistered(String email, int page, int pagSize);
+
     void buyTicket(String email, Long flightId, Long ticketId) throws InvalidUserException;
 
     Page<FlightDto> findAll(int page, int pagSize);

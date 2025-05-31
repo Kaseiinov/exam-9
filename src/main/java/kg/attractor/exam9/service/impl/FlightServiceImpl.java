@@ -31,6 +31,13 @@ public class FlightServiceImpl implements FlightService {
     private final UserService userService;
 
     @Override
+    public Page<FlightDto> findByUserRegistered(String email, int page, int pagSize){
+        Pageable pageable = PageRequest.of(page, pagSize);
+        Page<Flight> flights = flightRepository.findAllByTickets_User_Email(email, pageable);
+        return flightsPageBuilder(flights, pageable);
+    }
+
+    @Override
     public void buyTicket(String email, Long flightId, Long ticketId) throws InvalidUserException {
         User user = userService.getUserByEmailModel(email).orElseThrow(UserNotFoundException::new);
         if(user.getRoles().stream().anyMatch(r -> r.getRole().equals("ADMIN") || r.getRole().equals("COMPANY"))){

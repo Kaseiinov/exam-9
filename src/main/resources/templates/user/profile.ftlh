@@ -28,21 +28,39 @@
 
         </div>
         <#if user.roleName == "USER"><p class="text-center">History of orders</p></#if>
-        <#if user.roleName == "COMPANY"><p class="text-center">List of flights</p></#if>>
+        <#if user.roleName == "COMPANY"><p class="text-center">List of flights</p></#if>
 
         <div class="row">
             <#if user.roleName == "USER">
-                <div class="col-4">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
-                        </div>
+                <#if flights??>
+                    <div id="flightsList">
+                        <#list flights as flight>
+                            <div class="card w-100 mb-3 overflow-hidden list-group-item mb-3" >
+                                <div class="card-body">
+                                    <#if flight.company.name??>
+                                        <p class="card-text fs-2">Company ${flight.company.name!'undefined'}</p>
+                                    </#if>
+
+                                    <p class="card-text fs-3">
+                                        from <span class="departure-city">${flight.cityDeparture}</span>
+                                        to <span class="destination-city">${flight.cityArrival}</span>
+                                    </p>
+
+                                    <!-- Добавьте класс к дате -->
+                                    <div class="card-text">
+                                        deporture on <span class="departure-date">${flight.dateTimeDeparture}</span>
+                                        arrives on ${flight.dateTimeArrival}
+                                    </div>
+
+                                    <p class="card-text">Bisnes price - ${flight.bissnessPrice!"undefined"}</p>
+                                    <p class="card-text">Econom price - ${flight.economyPrice!"undefined"}</p>
+
+                                </div>
+                            </div>
+                        </#list>
                     </div>
-                </div>
+
+                </#if>
             </#if>
 
             <#if user.roleName == "COMPANY">
@@ -59,6 +77,37 @@
                 </div>
             </#if>
         </div>
+
+        <nav >
+            <div class="d-flex justify-content-center">
+                <ul class="pagination">
+                    <#if hasPrevious>
+                        <li class="page-item ">
+                            <a class="page-link" href="/?page=${currentPage - 1}" >previous</a>
+                        </li>
+                    <#else>
+                        <li class="page-item disabled">
+                            <a class="page-link" href="/?page=${currentPage - 1}" >previous</a>
+                        </li>
+                    </#if>
+                    <#list 0..(totalPages - 1) as page>
+                        <li class="page-item <#if page == currentPage>active</#if>">
+                            <a class="page-link" href="/?page=${page}">${page + 1}</a>
+                        </li>
+                    </#list>
+                    <#if hasNext>
+                        <li class="page-item">
+                            <a class="page-link" href="/?page=${currentPage + 1}">next</a>
+                        </li>
+                    <#else>
+                        <li class="page-item disabled">
+                            <a class="page-link" href="/?page=${currentPage + 1}">next</a>
+                        </li>
+                    </#if>
+
+                </ul>
+            </div>
+        </nav>
 
     </body>
 

@@ -1,6 +1,6 @@
 insert into users(email, password, enabled, first_name, last_name)
 values
-    ('admin', '$2a$10$PB0Zab6dldIfjOEyRZ0Mye6t.0zrzwRuZxBVuYLsDQBtURkaul/UC', true, 'Islam', 'Kaseiinov'), --password: admin
+    ('izlax@gmail.com', '$2a$10$2a.SIAPUpKTp5Cz6OA5VOOY.mtPQCzy2GaCYhf6lxchUmWSIWIl7m', true, 'Islam', 'Kaseiinov'), --password: admin
     ('izlax1@gmail.com', '$2a$10$2a.SIAPUpKTp5Cz6OA5VOOY.mtPQCzy2GaCYhf6lxchUmWSIWIl7m', true, 'Sanjar', 'Kaseiinov'),--password: qwe
     ('izlax2@gmail.com', '$2a$10$2a.SIAPUpKTp5Cz6OA5VOOY.mtPQCzy2GaCYhf6lxchUmWSIWIl7m', true, 'Anvar', 'Kaseiinov'),--password: qwe
     ('izlax3@gmail.com', '$2a$10$2a.SIAPUpKTp5Cz6OA5VOOY.mtPQCzy2GaCYhf6lxchUmWSIWIl7m', true, 'Tynchtyk', 'Kaseiinov');--password: qwe
@@ -38,7 +38,7 @@ values
 
 insert into usr_roles(usr_id, role_id)
 values
-    ((select id from users where email = 'admin'), (select id from roles where role = 'ADMIN')),
+    ((select id from users where email = 'izlax@gmail.com'), (select id from roles where role = 'ADMIN')),
     ((select id from users where email = 'izlax1@gmail.com'), (select id from roles where role = 'COMPANY')),
     ((select id from users where email = 'izlax2@gmail.com'), (select id from roles where role = 'USER')),
     ((select id from users where email = 'izlax3@gmail.com'), (select id from roles where role = 'USER'));
