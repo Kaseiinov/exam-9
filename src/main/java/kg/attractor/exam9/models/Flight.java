@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
@@ -14,6 +15,10 @@ public class Flight {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "date_time_dep")
+    private LocalDateTime dateTimeDeparture;
+    @Column(name = "date_time_arrive")
+    private LocalDateTime dateTimeArrival;
     @Column(name = "city_dep")
     private String cityDeparture;
     @Column(name = "city_arrive")

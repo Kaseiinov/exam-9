@@ -38,19 +38,10 @@ public class SecurityConfig {
 
 //                        User
 
-                                .requestMatchers("user/follow").fullyAuthenticated()
                                 .requestMatchers("user/profile").fullyAuthenticated()
                                 .requestMatchers("user/**").permitAll()
 
-
-
-//                        File
-                                .requestMatchers("/file/get/**").permitAll()
-
-                                .requestMatchers("/file/**").fullyAuthenticated()
-                                .requestMatchers("/file/upload/comment/**").fullyAuthenticated()
-
-
+                                .requestMatchers("/").permitAll()
 
                                 .anyRequest().permitAll()
                 );

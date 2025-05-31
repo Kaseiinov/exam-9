@@ -5,6 +5,7 @@ import kg.attractor.exam9.models.Company;
 import kg.attractor.exam9.models.Ticket;
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
@@ -14,9 +15,14 @@ import java.util.List;
 @AllArgsConstructor
 public class FlightDto {
     private Long id;
+    private LocalDateTime dateTimeDeparture;
+    private LocalDateTime dateTimeArrival;
     private String cityDeparture;
     private String cityArrival;
     private String uniqNumber;
     private Long companyId;
+    private List<TicketDto> tickets;
+    private Double bissnessPrice;
+    private Double economyPrice;
 
 }

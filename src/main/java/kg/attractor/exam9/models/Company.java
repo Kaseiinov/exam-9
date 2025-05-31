@@ -17,7 +17,7 @@ public class Company {
     private String name;
     private String email;
     private String password;
-    private Boolean enabled;
+    private Boolean enable;
     private String avatar;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "company")

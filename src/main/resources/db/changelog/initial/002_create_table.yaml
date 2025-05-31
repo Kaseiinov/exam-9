@@ -44,6 +44,17 @@ databaseChangeLog:
                     primaryKey: true
                     nullable: false
               - column:
+                  name: date_time_dep
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: date_time_arrive
+                  type: timestamp
+                  constraints:
+                    nullable: false
+
+              - column:
                   name: city_dep
                   type: varchar(55)
                   constraints:

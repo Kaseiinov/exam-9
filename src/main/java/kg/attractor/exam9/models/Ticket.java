@@ -13,9 +13,9 @@ public class Ticket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Double price;
-    private String status;
+    private Boolean status;
     private String type;
-    private String place;
+    private Integer place;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "flight_id")
